@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React, { Component } from "react";
+import { Link } from "react-router";
 
 class Header extends Component {
   constructor(props) {
@@ -13,10 +13,11 @@ class Header extends Component {
   }
 
   setLink() {
-    window.db.collection('artists')
+    window.db
+      .collection("artists")
       .aggregate({ $sample: { size: 100 } })
       .toArray()
-      .then((artists) => {
+      .then(artists => {
         const artist = artists[~~(Math.random() * artists.length)];
 
         if (artist) {
@@ -31,7 +32,9 @@ class Header extends Component {
         <nav>
           <div className="nav-wrapper">
             <div className="col s12">
-              <a href="#" className="brand-logo">UpStar Music</a>
+              <a href="#" className="brand-logo">
+                UpStar Music
+              </a>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li>
                   <Link
@@ -42,9 +45,7 @@ class Header extends Component {
                   </Link>
                 </li>
                 <li>
-                  <Link to={'/artists/new'}>
-                    Create Artist
-                  </Link>
+                  <Link to={"/artists/new"}>Create Artist</Link>
                 </li>
               </ul>
             </div>
@@ -53,6 +54,6 @@ class Header extends Component {
       </div>
     );
   }
-};
+}
 
 export default Header;
