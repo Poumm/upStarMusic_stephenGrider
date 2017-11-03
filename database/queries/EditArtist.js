@@ -1,4 +1,4 @@
-const Artist = require('../models/artist');
+const Artist = require("../models/artist");
 
 /**
  * Edits a single artist in the Artists collection
@@ -7,4 +7,5 @@ const Artist = require('../models/artist');
  * @return {promise} A promise that resolves when the record is edited
  */
 module.exports = (_id, artistProps) => {
+  return Artist.findOneAndUpdate({ _id }, artistProps);
 };
