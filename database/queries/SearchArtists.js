@@ -22,7 +22,9 @@ module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
       }
     : {};
   const nameCriteria =
-    criteria.name.length > 0 ? { $text: { $search: criteria.name } } : {};
+    criteria.name && criteria.name.length > 0
+      ? { $text: { $search: criteria.name } }
+      : {};
 
   const newCrits = {
     ...ageCriteria,
